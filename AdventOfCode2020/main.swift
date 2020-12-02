@@ -7,5 +7,6 @@
 
 import Foundation
 
-//dayOne()
-dayTwoPart1()
+//Day_1.solve()
+//Day_2.solve()
+Day_3.solve()
