@@ -17,16 +17,18 @@ func dayTwoPart1(){
 
 
     print( input.filter {
-        validate(password: $0)
+        validatePartTwo(password: $0)
     }.count)
 
     print(
         inputSmall.filter {
-            validate(password: $0)
+            validatePartTwo(password: $0)
         }.count)
+
+    print("12345"[2])
 }
 
-func validate(password: String) -> Bool{
+func validatePartOne(password: String) -> Bool{
     //    "2-5 l: fllxf"
     let parts = password.split(separator: " ")
 
@@ -44,4 +46,28 @@ func validate(password: String) -> Bool{
     }
 
     return (rawPassword.count >= minimum) && (rawPassword.count <= maximum)
+}
+
+func validatePartTwo(password: String) -> Bool{
+    //    "2-5 l: fllxf"
+    let parts = password.split(separator: " ")
+
+    let numbers = parts[0].split(separator:"-")
+
+    let minimum = Int(String(numbers[0]))!
+
+    let maximum = Int(String(numbers[1]))!
+    let letter = String(parts[1].dropLast())
+
+    var rawPassword = String(parts[2])
+
+    let pattern = (String(rawPassword[(minimum-1)]) == letter, String(rawPassword[(maximum-1)]) == letter)
+
+    return pattern.0 && !pattern.1 || pattern.1 && !pattern.0
+}
+
+extension String {
+    subscript(offset: Int) -> Character {
+        self[index(startIndex, offsetBy: offset)]
+    }
 }
