@@ -28,40 +28,35 @@ func dayTwoPart1(){
     print("12345"[2])
 }
 
+func extractParameter(passwordString: String) -> (min:Int,max:Int,letter:String,rawPassword:String) {
+    let parts = passwordString.split(separator: " ")
+    let numbers = parts[0].split(separator:"-")
+    let minimum = Int(String(numbers[0]))!
+    let maximum = Int(String(numbers[1]))!
+    let letter = String(parts[1].dropLast())
+    let rawPassword = String(parts[2])
+
+    return (minimum,maximum,letter,rawPassword)
+}
+
 func validatePartOne(password: String) -> Bool{
     //    "2-5 l: fllxf"
-    let parts = password.split(separator: " ")
+    var parameters = extractParameter(passwordString: password)
 
-    let numbers = parts[0].split(separator:"-")
-
-    let minimum = Int(String(numbers[0]))!
-
-    let maximum = Int(String(numbers[1]))!
-    let letter = parts[1].dropLast()
-
-    var rawPassword = String(parts[2])
-
-    rawPassword.removeAll { (Character) -> Bool in
-        String(letter) != String(Character)
+    parameters.rawPassword.removeAll { (Character) -> Bool in
+        String(parameters.letter) != String(Character)
     }
 
-    return (rawPassword.count >= minimum) && (rawPassword.count <= maximum)
+    return (parameters.rawPassword.count >= parameters.min)
+        && (parameters.rawPassword.count <= parameters.max)
 }
 
 func validatePartTwo(password: String) -> Bool{
     //    "2-5 l: fllxf"
-    let parts = password.split(separator: " ")
+    let parameters = extractParameter(passwordString: password)
 
-    let numbers = parts[0].split(separator:"-")
-
-    let minimum = Int(String(numbers[0]))!
-
-    let maximum = Int(String(numbers[1]))!
-    let letter = String(parts[1].dropLast())
-
-    var rawPassword = String(parts[2])
-
-    let pattern = (String(rawPassword[(minimum-1)]) == letter, String(rawPassword[(maximum-1)]) == letter)
+    let pattern = (String(parameters.rawPassword[(parameters.min-1)]) == parameters.letter,
+                   String(parameters.rawPassword[(parameters.max-1)]) == parameters.letter)
 
     return pattern.0 && !pattern.1 || pattern.1 && !pattern.0
 }
