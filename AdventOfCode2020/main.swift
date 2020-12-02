@@ -7,4 +7,5 @@
 
 import Foundation
 
-dayOne()
+//dayOne()
+dayTwoPart1()
