@@ -54,4 +54,3 @@ enum Day_3: Day {
         return treeCount
     }
 }
-
