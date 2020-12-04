@@ -31,12 +31,12 @@ enum Day_4: Day {
     }
 
     static func extractPassportData(input:[String]) -> [Data] {
-        var array = [String]()
+        var array = [Data]()
         var working = ""
         input.forEach { (line) in
             if line.isEmpty {
                 working = String(working.dropLast())
-                array.append(working)
+                array.append(try! JSONSerialization.data(withJSONObject: working.split(separator: " ").toDict, options: .fragmentsAllowed))
                 working = ""
             } else{
                 working.append(line)
@@ -44,14 +44,8 @@ enum Day_4: Day {
             }
 
         }
-        array.append(String(working.dropLast()))
-
-        //        print(String(data: try! JSONSerialization.data(withJSONObject: array, options: .sortedKeys),encoding: .utf8))
-
-        let array2 = array.map {
-            try! JSONSerialization.data(withJSONObject: $0.split(separator: " ").toDict, options: .fragmentsAllowed)
-        }
-        return array2
+        array.append(try! JSONSerialization.data(withJSONObject: working.split(separator: " ").toDict, options: .fragmentsAllowed))
+        return array
     }
 
     struct PassPort: Codable {
@@ -151,31 +145,5 @@ enum Day_4: Day {
             case amb, blu, brn, gry, grn, hzl, oth
         }
     }
-
 }
 
-extension Data {
-
-    /// Create `Data` from hexadecimal string representation
-    ///
-    /// This creates a `Data` object from hex string. Note, if the string has any spaces or non-hex characters (e.g. starts with '<' and with a '>'), those are ignored and only hex characters are processed.
-    ///
-    /// - returns: Data represented by this hexadecimal string.
-
-    init?(hexString: String) {
-        let len = hexString.count / 2
-        var data = Data(capacity: len)
-        var i = hexString.startIndex
-        for _ in 0..<len {
-            let j = hexString.index(i, offsetBy: 2)
-            let bytes = hexString[i..<j]
-            if var num = UInt8(bytes, radix: 16) {
-                data.append(&num, count: 1)
-            } else {
-                return nil
-            }
-            i = j
-        }
-        self = data
-    }
-}
