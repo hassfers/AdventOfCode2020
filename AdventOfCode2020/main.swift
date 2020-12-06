@@ -12,3 +12,4 @@ import Foundation
 //Day_3.solve()
 //Day_4.solve()
 Day_5.solve()
+Day_6.solve()
