@@ -34,6 +34,7 @@
 		C1CECCE2257A7E0500A4F14C /* Day_18.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECCC8257A7E0500A4F14C /* Day_18.swift */; };
 		C1CECCE3257A7E0500A4F14C /* Day_11.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECCCB257A7E0500A4F14C /* Day_11.swift */; };
 		C1CECCE4257A7E0500A4F14C /* Day_8.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECCCE257A7E0500A4F14C /* Day_8.swift */; };
+		C1D4F0F3257CDD1400F5F38B /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4F0F2257CDD1400F5F38B /* Array+Ext.swift */; };
 		C1D83D1F2577C545005B8662 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D83D1E2577C545005B8662 /* Day.swift */; };
 		C1D83D222577C7AA005B8662 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D83D212577C7AA005B8662 /* Input.swift */; };
 		C1D83D292577CF06005B8662 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D83D282577CF06005B8662 /* String+Ext.swift */; };
@@ -104,6 +105,7 @@
 		C1CECCCC257A7E0500A4F14C /* Day_11_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_11_Input; sourceTree = "<group>"; };
 		C1CECCCE257A7E0500A4F14C /* Day_8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_8.swift; sourceTree = "<group>"; };
 		C1CECCCF257A7E0500A4F14C /* Day_8_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_8_Input; sourceTree = "<group>"; };
+		C1D4F0F2257CDD1400F5F38B /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		C1D83D1D2577C383005B8662 /* Day_1_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_1_Input; sourceTree = "<group>"; };
 		C1D83D1E2577C545005B8662 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C1D83D212577C7AA005B8662 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				C1D83D212577C7AA005B8662 /* Input.swift */,
 				C1173E4C2576358400D9DE15 /* main.swift */,
 				C1D83D282577CF06005B8662 /* String+Ext.swift */,
+				C1D4F0F2257CDD1400F5F38B /* Array+Ext.swift */,
 				C1D83D182577C2F3005B8662 /* Day_1 */,
 				C1288D8E2577D14F0066ECBD /* Day_2 */,
 				C1C9E2412577D448000F4471 /* Day_3 */,
@@ -475,6 +478,7 @@
 				C1CECCD9257A7E0500A4F14C /* Day_12.swift in Sources */,
 				C1CECCE4257A7E0500A4F14C /* Day_8.swift in Sources */,
 				C1CECCD4257A7E0500A4F14C /* Day_7.swift in Sources */,
+				C1D4F0F3257CDD1400F5F38B /* Array+Ext.swift in Sources */,
 				C1CECCE1257A7E0500A4F14C /* Day_13.swift in Sources */,
 				C1CECCDF257A7E0500A4F14C /* Day_10.swift in Sources */,
 				C1CECCDC257A7E0500A4F14C /* Day_15.swift in Sources */,
