@@ -3,16 +3,12 @@
 enum Day_6:Day {
   static var day: Input.Day = .Day_6
 
-    static func solvePart1(input: [String]) -> String {
-        let array = input.splitToSubArrays(with: "")
-        let questions = array.map{Questions(input: $0).positiveQuestions}
-        return "\(questions.sum)"
+    static func solvePart1(input: [[String]]) -> String {
+        "\(input.map{Questions(input: $0).positiveQuestions}.sum)"
     }
 
-    static func solvePart2(input: [String]) -> String {
-        let array = input.splitToSubArrays(with: "")
-        let questions = array.map{Questions(input2: $0).positiveQuestions}
-        return "\(questions.sum)"
+    static func solvePart2(input: [[String]]) -> String {
+        "\(input.map{Questions(input2: $0).positiveQuestions}.sum)"
     }
 
     struct Questions {

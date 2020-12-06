@@ -34,4 +34,8 @@ enum Input {
         }
         return stringContent.components(separatedBy: "\n").dropLast()
     }
+
+    static func getStringArray(for day: Day, separeted by: String) -> [[String]]{
+        getStringArray(for: day).splitToSubArrays(with: "")
+    }
 }

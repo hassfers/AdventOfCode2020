@@ -32,4 +32,8 @@ extension Day {
     static func input() -> [Int] {
         Input.getIntArray(for: day)
     }
+
+    static func input() -> [[String]]{
+        Input.getStringArray(for: day, separeted: "")
+    }
 }
