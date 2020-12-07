@@ -56,8 +56,8 @@ enum Day_7:Day {
 
 
     static func recursiveBagSearchTwo(input: [String], color: String) -> Int {
-        var innerbagCount = 0
-        input.filter {
+        // filter inner bags
+        return input.filter {
             $0.starts(with: color)
         }.flatMap{
             $0.dropFirst(color.count + 6 + 8)
@@ -68,12 +68,13 @@ enum Day_7:Day {
                 .map{
                     $0.trimmingCharacters(in: .whitespaces)
                 }
-        }.forEach{
-            let array = $0.split(separator: " ")
+
+        // count recrusiv 
+        }.reduce(0){ (result,next) -> Int in
+            let array = next.split(separator: " ")
             let count = Int(array[0]) ?? 0
-            innerbagCount = innerbagCount + count + count * (array.count == 3 ? recursiveBagSearchTwo(input: input, color: (array[1] + " " + array[2])) : 1)
+            return result + count + count * (array.count == 3 ? recursiveBagSearchTwo(input: input, color: (array[1] + " " + array[2])) : 1)
         }
-        return innerbagCount
     }
 }
 
