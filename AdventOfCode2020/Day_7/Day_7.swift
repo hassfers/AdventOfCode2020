@@ -34,7 +34,7 @@ enum Day_7:Day {
             "dotted black bags contain no other bags."
         ]
 
-//        recursiveBagSearchTwo(input: expample, color: "shiny gold")
+        //        recursiveBagSearchTwo(input: expample, color: "shiny gold")
         return "\( recursiveBagSearchTwo(input: input, color: "shiny gold"))"
     }
 
@@ -56,34 +56,23 @@ enum Day_7:Day {
 
 
     static func recursiveBagSearchTwo(input: [String], color: String) -> Int {
-        var innerBags = input.filter {
+        var innerbagCount = 0
+        input.filter {
             $0.starts(with: color)
         }.flatMap{
             $0.dropFirst(color.count + 6 + 8)
                 .replacingOccurrences(of: "bags", with: "")
                 .replacingOccurrences(of: "bag", with: "")
+                .replacingOccurrences(of: ".", with: "")
                 .split(separator: ",")
                 .map{
                     $0.trimmingCharacters(in: .whitespaces)
                 }
-        }
-
-        let innerbagColor = innerBags.map{
-            $0.split(separator: " ")
-        }.map{
-            $0.joined(separator: " ")
-                .replacingOccurrences(of: ".", with: "")
-        }
-
-        var innerbagCount = 0
-
-        innerbagColor.forEach{
+        }.forEach{
             let array = $0.split(separator: " ")
             let count = Int(array[0]) ?? 0
-            print("\($0) count:\(count) innerbagCount:\(innerbagCount)")
             innerbagCount = innerbagCount + count + count * (array.count == 3 ? recursiveBagSearchTwo(input: input, color: (array[1] + " " + array[2])) : 1)
         }
-        print("end \(innerbagCount)")
         return innerbagCount
     }
 }
