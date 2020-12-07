@@ -28,3 +28,16 @@ extension Array where Element == Int {
         reduce(0, +)
     }
 }
+
+
+extension Array {
+    func firstElements(n: Int) -> Array{
+        Array(self.dropLast(self.count - n))
+    }
+}
+
+extension Array where Element == String{
+    var toStringArray: [String] {
+        Array(self.map{String($0)})
+    }
+}

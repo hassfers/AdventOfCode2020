@@ -14,5 +14,15 @@ extension String {
 //        let array = self.split(separator: ":")
 //        return [String(array[0]):String(array[1])]
 //    }
-}
 
+    var trimmedStaringAndEndingWhiteSpaces: String {
+        var buffer = self
+        while buffer.starts(with: " ") {
+            buffer.removeFirst()
+        }
+        while buffer.last == " " {
+            buffer.removeLast()
+        }
+        return buffer
+    }
+}
