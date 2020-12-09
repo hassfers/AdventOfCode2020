@@ -33,7 +33,7 @@ enum Day_9:Day {
 
         while example.count + 1 > (preambleLenght + 1) {
             let pre = Array(example.prefix(preambleLenght))
-            let test = example [preambleLenght]
+            let test = example[preambleLenght]
             if !isValidNumber(preamble: pre, number: test){
                 return "\(test)"
             }
@@ -69,31 +69,27 @@ enum Day_9:Day {
 
         example = input
 
-        for (index,_) in example.enumerated(){
-            var array = [example[index]]
-            var innercount = index + 1
-            while array.sum < valid,
+        for (index, value) in example.enumerated(){
+            var start = value
+            var  innercount = index + 1
+            while start < valid,
                   innercount < example.count {
-                array.append(example[innercount])
+                start += example[innercount]
                 innercount += 1
             }
-            if array.sum == valid{
-                return "\(array.min()! + array.max()!)"
+            if start == valid{
+                let array = example[index...innercount - 1]
+              return "\(array.min()! + array.max()!)"
             }
         }
-        return "add some code here"
+        return "error"
     }
 
     static func isValidNumber(preamble:[Int],number:Int) -> Bool {
         var validNumbers = [Int]()
-        for index in 0..<preamble.count{
-            let first = preamble[index]
-            let innerArray = preamble.dropFirst(index+1)
-            validNumbers.append(contentsOf: innerArray.map{
-                first != $0 ? first+$0 : -1
-            }.filter({
-                $0 != -1
-            }))
+        preamble.enumerated().forEach{ element in
+            let innerArray = preamble.dropFirst(element.offset+1)
+            validNumbers.append(contentsOf: innerArray.map{element.element+$0})
         }
 
         return validNumbers.contains(number)
