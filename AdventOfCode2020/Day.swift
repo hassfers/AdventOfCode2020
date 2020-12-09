@@ -19,9 +19,11 @@ protocol Day {
 
 extension Day {
     static func solve() {
+        let time1 = Date()
         print("********** \(day) Year 2020 **********")
-        print("Solution for Part 1: \(solvePart1(input: input()))")
-        print("Solution for Part 2: \(solvePart2(input: input()))")
+        print("Solution for Part 1: \(solvePart1(input: input())) in \(Date().timeIntervalSinceReferenceDate - time1.timeIntervalSinceReferenceDate) sek")
+        let time2 = Date()
+        print("Solution for Part 2: \(solvePart2(input: input())) in \(Date().timeIntervalSinceReferenceDate - time2.timeIntervalSinceReferenceDate) sek")
         print("*************************************")
     }
 
