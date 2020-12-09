@@ -7,12 +7,20 @@
 
 import Foundation
 extension Array where Element == Substring {
-    var toDict: [String:String] {
+    func toDict(separator:Character) -> [String:String] {
         var dict = [String:String]()
         self.forEach{
-            let array =  $0.split(separator: ":")
+            let array =  $0.split(separator: separator)
             dict[String(array[0])]=String(array[1])
         }
+        return dict
+    }
+}
+extension String {
+    func toDict(separator:Character) -> [String:String] {
+        var dict = [String:String]()
+        let array =  self.split(separator: separator)
+        dict[String(array[0])]=String(array[1])
         return dict
     }
 }
@@ -36,8 +44,8 @@ extension Array {
     }
 }
 
-extension Array where Element == String{
+extension Array where Element == Substring{
     var toStringArray: [String] {
-        Array(self.map{String($0)})
+        self.map{String($0)}
     }
 }
