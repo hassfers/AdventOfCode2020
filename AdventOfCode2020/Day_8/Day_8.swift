@@ -40,9 +40,7 @@ enum Day_8:Day {
             }
             do {
                 try computer.runFailure()
-                print(computer.accumulator)
-                print("computer finished")
-                return ""
+                return "\(computer.accumulator)"
             } catch {
                 computer = Computer(inputString: input)
             }

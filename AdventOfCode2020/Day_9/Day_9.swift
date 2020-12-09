@@ -43,7 +43,6 @@ enum Day_9:Day {
     }
 
     static func solvePart2(input: [Int]) -> String {
-        let time = Date()
         let valid = 70639851
         var example = [
             35,
@@ -73,14 +72,12 @@ enum Day_9:Day {
         for (index,_) in example.enumerated(){
             var array = [example[index]]
             var innercount = index + 1
-            while array.sum < valid, innercount < example.count {
+            while array.sum < valid,
+                  innercount < example.count {
                 array.append(example[innercount])
                 innercount += 1
             }
             if array.sum == valid{
-                print("found")
-                print(array)
-                print("\((Date().timeIntervalSinceReferenceDate - time.timeIntervalSinceReferenceDate))")
                 return "\(array.min()! + array.max()!)"
             }
         }
