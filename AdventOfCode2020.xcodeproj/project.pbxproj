@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,6 +60,8 @@
 		C1288D8F2577D1710066ECBD /* Day_2_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_2_Input; sourceTree = "<group>"; };
 		C12EF79E25792A250072CE58 /* Day_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_4.swift; sourceTree = "<group>"; };
 		C12EF7A225792A340072CE58 /* Day_4_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_4_Input; sourceTree = "<group>"; };
+		C12F94042D0D742700C5FB49 /* AOC2024 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AOC2024; path = /Users/stefanhassferter/Desktop/AOC2024; sourceTree = "<absolute>"; };
+		C12F94092D0D75CA00C5FB49 /* AOC2024Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2024Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14502B8257A7BCF0000C658 /* Data+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Ext.swift"; sourceTree = "<group>"; };
 		C1684016257F606E00C830D2 /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		C18E7A2225777D0300EAE557 /* Day_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_2.swift; sourceTree = "<group>"; };
@@ -114,8 +116,19 @@
 		C1D83D282577CF06005B8662 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C12F940A2D0D75CA00C5FB49 /* AOC2024Test */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AOC2024Test; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		C1173E462576358400D9DE15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12F94062D0D75CA00C5FB49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +141,9 @@
 		C1173E402576358400D9DE15 = {
 			isa = PBXGroup;
 			children = (
+				C12F94042D0D742700C5FB49 /* AOC2024 */,
 				C1173E4B2576358400D9DE15 /* AdventOfCode2020 */,
+				C12F940A2D0D75CA00C5FB49 /* AOC2024Test */,
 				C1173E4A2576358400D9DE15 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C1173E492576358400D9DE15 /* AdventOfCode2020 */,
+				C12F94092D0D75CA00C5FB49 /* AOC2024Test.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -425,17 +441,42 @@
 			productReference = C1173E492576358400D9DE15 /* AdventOfCode2020 */;
 			productType = "com.apple.product-type.tool";
 		};
+		C12F94082D0D75CA00C5FB49 /* AOC2024Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C12F940D2D0D75CA00C5FB49 /* Build configuration list for PBXNativeTarget "AOC2024Test" */;
+			buildPhases = (
+				C12F94052D0D75CA00C5FB49 /* Sources */,
+				C12F94062D0D75CA00C5FB49 /* Frameworks */,
+				C12F94072D0D75CA00C5FB49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C12F940A2D0D75CA00C5FB49 /* AOC2024Test */,
+			);
+			name = AOC2024Test;
+			packageProductDependencies = (
+			);
+			productName = AOC2024Test;
+			productReference = C12F94092D0D75CA00C5FB49 /* AOC2024Test.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C1173E412576358400D9DE15 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					C1173E482576358400D9DE15 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					C12F94082D0D75CA00C5FB49 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -453,9 +494,20 @@
 			projectRoot = "";
 			targets = (
 				C1173E482576358400D9DE15 /* AdventOfCode2020 */,
+				C12F94082D0D75CA00C5FB49 /* AOC2024Test */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C12F94072D0D75CA00C5FB49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1173E452576358400D9DE15 /* Sources */ = {
@@ -494,6 +546,13 @@
 				C1CECCDE257A7E0500A4F14C /* Day_20.swift in Sources */,
 				C1CECCE0257A7E0500A4F14C /* Day_22.swift in Sources */,
 				C12EF79F25792A250072CE58 /* Day_4.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C12F94052D0D75CA00C5FB49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6KRFZPVQM;
+				DEVELOPMENT_TEAM = 5WPT3P86T4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -630,9 +689,52 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6KRFZPVQM;
+				DEVELOPMENT_TEAM = 5WPT3P86T4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C12F940E2D0D75CA00C5FB49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5WPT3P86T4;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sth.AOC2024Test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C12F940F2D0D75CA00C5FB49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5WPT3P86T4;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sth.AOC2024Test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -654,6 +756,15 @@
 			buildConfigurations = (
 				C1173E512576358400D9DE15 /* Debug */,
 				C1173E522576358400D9DE15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C12F940D2D0D75CA00C5FB49 /* Build configuration list for PBXNativeTarget "AOC2024Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12F940E2D0D75CA00C5FB49 /* Debug */,
+				C12F940F2D0D75CA00C5FB49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
