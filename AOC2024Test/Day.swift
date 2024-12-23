@@ -26,7 +26,14 @@ extension Day {
         print("Solution for Part 2: \(solvePart2(input: input())) in \(Date().timeIntervalSinceReferenceDate - time2.timeIntervalSinceReferenceDate) sek")
         print("*************************************")
     }
-
+    
+    var resultPartOne: String {
+        solvePart1(input: input())
+    }
+    var resultPartTwo: String {
+        solvePart2(input: input())
+    }
+    
     
     
     func input() -> [String] {

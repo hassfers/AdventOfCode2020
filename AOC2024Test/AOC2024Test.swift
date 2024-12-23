@@ -37,7 +37,9 @@ class Day6: Day {
     
     var day: Input.Day = .Day_6
     func solvePart1(input: [String]) -> String {
-        var visited_points = Set<Point>()
+        var visited_points = [Point]()
+        
+        var visited = input
         
         var startingPoint = input.twoDimensionalFirstSearch(string: "^")
         var direction = Direction.UP
@@ -46,19 +48,38 @@ class Day6: Day {
             let result = input.findWay(direction: direction, startPoint: startingPoint)
             do {
                 let points = try result.get()
-                print(points)
-                visited_points = visited_points.union(points)
-                print(visited_points)
-                print(visited_points.count)
+           
+                visited_points.append(contentsOf: points)
+                if example != nil {
+                    print(points)
+                    print(visited_points)
+                    print(visited_points.count)
+                }
                 direction = direction.nextDirection
                 startingPoint = points.last!
             } catch  {
                 print(error)
+                if (error is GuardLeaveAreaException) {
+                    visited_points.append(contentsOf: error.lastPoints)
+                }
                 break
             }
         }
         
-        return "\(visited_points.count)"
+        if example != nil {
+            visited_points.forEach {
+                print($0)
+                let index = visited[$0.y].index(visited[$0.y].startIndex, offsetBy: $0.x)
+                visited[$0.y].replaceSubrange(index...index, with: "X")
+                visited.forEach { print($0) }
+                print("___")
+            }
+            
+            visited.forEach { print($0) }
+            print(visited.map { $0.count { $0 == "X" } }.sum)
+        }
+        
+        return "\(Set(visited_points).count + 1)"
     }
     func solvePart2(input: [String]) -> String {
         return ""
@@ -81,24 +102,28 @@ extension Array where Element == String {
     func findWay(direction: Direction, startPoint: Point) -> Result<[Point],GuardLeaveAreaException> {
         switch direction {
         case .UP:
-            let potentionalWay = self.column(number:startPoint.x)
-            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.y, limitedBy: potentionalWay.endIndex)
-            if let index = potentionalWay.firstIndex(of: "#") {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: index))
+            let FullpotentionalWay = self.column(number:startPoint.x)
+            let globalStarting = FullpotentionalWay.index(FullpotentionalWay.startIndex, offsetBy: startPoint.y)
+            let potentionalWay = FullpotentionalWay.substring(to: globalStarting)
+//            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.y, limitedBy: potentionalWay.endIndex)
+            if let index = potentionalWay.lastIndex(of: "#") {
+                let test = abs( potentionalWay.distance(from: potentionalWay.endIndex, to: index))
                 return .success((0..<test).map { Point(x: startPoint.x, y: startPoint.y - $0) })
             } else {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: potentionalWay.startIndex))
+                let test = abs( potentionalWay.distance(from: potentionalWay.endIndex, to: potentionalWay.startIndex))
                 return .failure(GuardLeaveAreaException(lastPoints: (0..<test).map { Point(x: startPoint.x, y: startPoint.y - $0) }))
             }
             
         case .DOWN:
-            let potentionalWay = self.column(number:startPoint.x)
-            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.y, limitedBy: potentionalWay.endIndex)
+            let FullpotentionalWay = self.column(number:startPoint.x)
+            let globalStarting = FullpotentionalWay.index(FullpotentionalWay.startIndex, offsetBy: startPoint.y)
+            let potentionalWay = FullpotentionalWay.substring(from: globalStarting)
+//            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.y, limitedBy: potentionalWay.endIndex)
             if let index = potentionalWay.firstIndex(of: "#") {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: index))
+                let test = abs( potentionalWay.distance(from: potentionalWay.startIndex, to: index))
                 return .success((0..<test).map { Point(x: startPoint.x, y: startPoint.y + $0) })
             } else {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: potentionalWay.endIndex))
+                let test = abs( potentionalWay.distance(from: potentionalWay.startIndex, to: potentionalWay.endIndex))
                 return .failure(GuardLeaveAreaException(lastPoints:(0..<test).map { Point(x: startPoint.x, y: startPoint.y + $0) }))
             }
             
@@ -106,12 +131,12 @@ extension Array where Element == String {
             let FullpotentionalWay = self[startPoint.y]
             let globalStarting = FullpotentionalWay.index(FullpotentionalWay.startIndex, offsetBy: startPoint.x)
             let potentionalWay = self[startPoint.y].substring(to: globalStarting)
-            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.x, limitedBy: potentionalWay.endIndex)
+//            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.x, limitedBy: potentionalWay.endIndex)
             if let index = potentionalWay.lastIndex(of: "#") {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: index))
+            let test = abs( potentionalWay.distance(from: potentionalWay.endIndex, to: index))
                 return .success((0..<test).map { Point(x: startPoint.x - $0, y: startPoint.y) })
             } else {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: potentionalWay.startIndex))
+                let test = abs( potentionalWay.distance(from: potentionalWay.endIndex, to: potentionalWay.startIndex))
                 return .failure(GuardLeaveAreaException(lastPoints:(0..<test).map { Point(x: startPoint.x - $0, y: startPoint.y) }))
             }
             
@@ -119,13 +144,13 @@ extension Array where Element == String {
             
             let FullpotentionalWay = self[startPoint.y]
             let globalStarting = FullpotentionalWay.index(FullpotentionalWay.startIndex, offsetBy: startPoint.x)
-            let potentionalWay = self[startPoint.y].substring(from: globalStarting)
-            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.x, limitedBy: potentionalWay.endIndex)
+            let potentionalWay = FullpotentionalWay.substring(from: globalStarting)
+//            let startIndex = potentionalWay.index(potentionalWay.startIndex, offsetBy: startPoint.x, limitedBy: potentionalWay.endIndex)
             if let index = potentionalWay.firstIndex(of: "#") {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: index))
+                let test = abs( potentionalWay.distance(from: potentionalWay.startIndex, to: index))
                 return .success((0..<test).map { Point(x: startPoint.x + $0, y: startPoint.y) })
             } else {
-                let test = abs( potentionalWay.distance(from: startIndex!, to: potentionalWay.endIndex))
+                let test = abs( potentionalWay.distance(from: potentionalWay.startIndex, to: potentionalWay.endIndex))
                 return .failure(GuardLeaveAreaException(lastPoints:(0..<test).map { Point(x: startPoint.x + $0, y: startPoint.y) }))
             }
         }
@@ -152,7 +177,7 @@ struct GuardLeaveAreaException: Error {
 
 class AOC2024Test: XCTestCase {
     let example = Array(arrayLiteral:
-                            "....#.....",
+                        "....#.....",
                         ".........#",
                         "..........",
                         "..#.......",
@@ -166,12 +191,12 @@ class AOC2024Test: XCTestCase {
     
     func testPartOneExample() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        Day6(example: example).solve()
+        XCTAssertEqual( Day6(example: example).resultPartOne, "42")
     }
     
     func testPartOnePuzzleExample() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        Day6(example: nil).solve()
+        XCTAssertEqual( Day6(example: nil).resultPartOne, "4559")
     }
     
 }
