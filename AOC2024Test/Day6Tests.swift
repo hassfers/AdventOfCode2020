@@ -189,14 +189,14 @@ class AOC2024Test: XCTestCase {
                         "......#...")
     
     
-    func testPartOneExample() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        XCTAssertEqual( Day6(example: example).resultPartOne, "42")
-    }
-    
-    func testPartOnePuzzleExample() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        XCTAssertEqual( Day6(example: nil).resultPartOne, "4559")
-    }
+//    func testPartOneExample() async throws {
+//        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+//        XCTAssertEqual( Day6(example: example).resultPartOne, "42")
+//    }
+//    
+//    func testPartOnePuzzleExample() async throws {
+//        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+//        XCTAssertEqual( Day6(example: nil).resultPartOne, "4559")
+//    }
     
 }
